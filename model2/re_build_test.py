@@ -84,7 +84,7 @@ if __name__ == '__main__':
     train_order['amt_order_ordertable'] = train_order['amt_order'].map(lambda x:np.nan if ((x == 'NA')| (x == 'null')) else float(x))
     train_order['unit_price_ordertable'] = train_order['unit_price'].map(lambda x:np.nan if ((x == 'NA')| (x == 'null')) else float(x))
     
-    train_order['time_order_ordertable'] = train_order['time_order'].map(lambda x : pd.lib.NaT if (str(x) == '0' or x == 'NA' or x == 'nan')
+    train_order['time_order_ordertable'] = train_order['time_order'].map(lambda x : pd.lib.NaT if (str(x) == '0' or str(x) == 'NA' or str(x) == 'nan')
                                 else (datetime.datetime.strptime(str(x),'%Y-%m-%d %H:%M:%S') if ':' in str(x)
                                 else (datetime.datetime.utcfromtimestamp(int(x[0:10])) + datetime.timedelta(hours = 8))))
 
